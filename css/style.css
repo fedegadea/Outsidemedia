@@ -41,6 +41,8 @@ body {
 /* ── TIPOGRAFÍA GLOBAL ── */
 .accent-text { color: var(--accent); }
 
+.section-header { margin-bottom: 4rem !important; }
+
 .section-label {
   display: inline-block;
   font-size: 0.72rem;
@@ -69,12 +71,12 @@ body {
 /* ── SECCIONES ── */
 .section-light {
   background-color: var(--light-bg);
-  padding: 110px 0;
+  padding: 130px 0;
 }
 
 .section-light-alt {
   background-color: var(--light-alt-bg);
-  padding: 110px 0;
+  padding: 130px 0;
 }
 
 /* Texto en secciones light */
@@ -193,19 +195,21 @@ body {
    NAVBAR
 ============================================= */
 #mainNav {
-  background: transparent;
+  background: rgba(6, 6, 6, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding: 1.4rem 0;
-  transition: background 0.35s ease, padding 0.35s ease, backdrop-filter 0.35s ease;
-  border-bottom: 1px solid transparent;
+  transition: background 0.35s ease, padding 0.35s ease;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
   z-index: 1000;
 }
 
 #mainNav.scrolled {
-  background: rgba(8, 8, 8, 0.94);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: rgba(6, 6, 6, 0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
 }
 
 .brand-outside {
@@ -294,7 +298,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-top: 80px;
+  padding-top: 110px;
 }
 
 /* Badge "Tu marca presente 24/7" */
@@ -311,7 +315,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.75);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   backdrop-filter: blur(8px);
   opacity: 0;
   animation: fadeUp 0.7s 0.3s forwards;
@@ -346,24 +350,23 @@ body {
 
 .hero-title .accent-text {
   color: var(--accent);
-  font-style: italic;
 }
 
 .hero-sub {
   font-size: 1.05rem;
   color: var(--text-body);
-  line-height: 1.75;
-  margin-top: 1.75rem;
+  line-height: 1.8;
+  margin-top: 2rem;
   max-width: 500px;
   opacity: 0;
   animation: fadeUp 0.8s 0.7s forwards;
 }
 
 .hero-actions {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.2rem;
   opacity: 0;
   animation: fadeUp 0.8s 0.9s forwards;
 }
@@ -518,7 +521,7 @@ body {
 ============================================= */
 .section-accent {
   background: #0f0f0f;
-  padding: 80px 0;
+  padding: 100px 0;
   border-top: 1px solid #1a1a1a;
   border-bottom: 1px solid #1a1a1a;
 }
@@ -551,7 +554,7 @@ body {
   background: var(--light-bg);
   border: 1px solid var(--light-border);
   border-radius: 8px;
-  padding: 1.75rem;
+  padding: 2rem;
   height: 100%;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -909,8 +912,8 @@ body {
   .hero-blob path { d: path("M0,0 L100,0 L100,100 L0,100 Z"); }
 
   .section-light,
-  .section-light-alt { padding: 80px 0; }
-  #contacto { padding: 100px 0; background-attachment: scroll; }
+  .section-light-alt { padding: 90px 0; }
+  #contacto { padding: 110px 0; background-attachment: scroll; }
 
   .navbar-collapse {
     background: rgba(6,6,6,0.97);
