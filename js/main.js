@@ -2,13 +2,13 @@
 // OUTSIDEMEDIA — main.js
 // =============================================
 
-// ── Navbar: agrega clase 'scrolled' al hacer scroll
+// ── Navbar scroll
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 40);
+  nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
-// ── Scroll reveal: anima elementos al entrar en viewport
+// ── Scroll reveal (Outfront-style: sutil y limpio)
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -16,15 +16,46 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll(
   '.formato-card, .feature-card, .step-card, .cobertura-card, .stat-item, .section-header'
 ).forEach((el, i) => {
   el.classList.add('reveal');
-  el.style.transitionDelay = `${(i % 4) * 80}ms`;
+  el.style.transitionDelay = `${(i % 4) * 90}ms`;
   revealObserver.observe(el);
 });
+
+// ── Counter animado para los stats
+const counters = document.querySelectorAll('.stat-num');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const raw = el.textContent.trim();
+    const num = parseInt(raw.replace(/\D/g, ''));
+    if (!num) return;
+
+    const prefix = raw.startsWith('+') ? '+' : '';
+    const duration = 1600;
+    const steps = 50;
+    const stepVal = num / steps;
+    let current = 0;
+    const interval = setInterval(() => {
+      current += stepVal;
+      if (current >= num) {
+        el.textContent = prefix + num;
+        clearInterval(interval);
+      } else {
+        el.textContent = prefix + Math.floor(current);
+      }
+    }, duration / steps);
+
+    counterObserver.unobserve(el);
+  });
+}, { threshold: 0.5 });
+
+counters.forEach(el => counterObserver.observe(el));
 
 // ── Smooth scroll para links del navbar
 document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -32,10 +63,9 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     const target = document.querySelector(link.getAttribute('href'));
     if (!target) return;
     e.preventDefault();
-    const offset = nav.offsetHeight + 12;
+    const offset = nav.offsetHeight + 16;
     window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
 
-    // Cierra menú móvil si está abierto
     const collapse = document.getElementById('navMenu');
     if (collapse.classList.contains('show')) {
       bootstrap.Collapse.getInstance(collapse)?.hide();
@@ -43,22 +73,20 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// ── Floating WhatsApp: ocultar mientras el usuario scrollea rápido
+// ── WhatsApp float: fade mientras scrollea
 let scrollTimer;
 const waFloat = document.getElementById('waFloat');
 window.addEventListener('scroll', () => {
-  waFloat.style.opacity = '0.4';
+  if (waFloat) waFloat.style.opacity = '0.5';
   clearTimeout(scrollTimer);
-  scrollTimer = setTimeout(() => { waFloat.style.opacity = '1'; }, 400);
+  scrollTimer = setTimeout(() => {
+    if (waFloat) waFloat.style.opacity = '1';
+  }, 350);
 }, { passive: true });
 
-// ── Animación del ticker (pausa on hover)
+// ── Ticker: pausa on hover
 const ticker = document.querySelector('.ticker');
 if (ticker) {
-  ticker.parentElement.addEventListener('mouseenter', () => {
-    ticker.style.animationPlayState = 'paused';
-  });
-  ticker.parentElement.addEventListener('mouseleave', () => {
-    ticker.style.animationPlayState = 'running';
-  });
+  ticker.parentElement.addEventListener('mouseenter', () => ticker.style.animationPlayState = 'paused');
+  ticker.parentElement.addEventListener('mouseleave', () => ticker.style.animationPlayState = 'running');
 }
