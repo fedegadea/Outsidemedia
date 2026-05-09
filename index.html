@@ -6,14 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Outsidemedia – Espacios publicitarios de alto impacto en Pinamar y Ciudad de Buenos Aires. Vallas, pantallas LED, refugios y más.">
   <title>Outsidemedia | Publicidad Exterior de Alto Impacto</title>
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
-  <!-- Bootstrap 5 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Custom CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -32,6 +27,7 @@
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2">
           <li class="nav-item"><a class="nav-link" href="#formatos">Formatos</a></li>
           <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="#power-move">Alcance</a></li>
           <li class="nav-item"><a class="nav-link" href="#como-funciona">Cómo funciona</a></li>
           <li class="nav-item"><a class="nav-link" href="#cobertura">Cobertura</a></li>
           <li class="nav-item ms-lg-3">
@@ -46,11 +42,10 @@
 
   <!-- ===== HERO ===== -->
   <section id="hero">
-    <!-- Video de fondo -->
     <video class="hero-video" autoplay muted loop playsinline poster="images/sarmiento.jpg">
       <source src="images/magnific_quiero-que-los-autos-circ_2916935240.mp4" type="video/mp4">
     </video>
-    <!-- Blob blanco sólido estilo Outfront -->
+    <!-- Blob blanco estilo Outfront -->
     <svg class="hero-blob" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,0 L60,0 C70,6 64,16 70,28 C76,40 66,50 72,63 C77,74 68,84 62,92 C59,96 56,98 54,100 L0,100 Z" fill="white"/>
     </svg>
@@ -61,7 +56,7 @@
             <span class="hero-badge-dot"></span>
             Tu marca presente 24/7
           </div>
-          <h1 class="hero-title">DONDE<br><span class="accent-text">TODOS</span><br>TE VEN.</h1>
+          <h1 class="hero-title">CONSTRUIMOS<br>MARCAS EN EL<br><span class="accent-text">MUNDO REAL.</span></h1>
           <p class="hero-sub">
             Ponemos tu marca en los mejores espacios de Pinamar y CABA.<br>
             Alta visibilidad, máximo impacto, resultados reales.
@@ -77,12 +72,10 @@
         </div>
       </div>
     </div>
-    <div class="hero-scroll-indicator">
-      <span></span>
-    </div>
+    <div class="hero-scroll-indicator"><span></span></div>
   </section>
 
-  <!-- ===== TICKER / BANDA ===== -->
+  <!-- ===== TICKER ===== -->
   <div class="ticker-wrap">
     <div class="ticker">
       <span>VALLAS GIGANTES</span><span class="sep">✦</span>
@@ -102,6 +95,117 @@
     </div>
   </div>
 
+  <!-- ===== EL PODER DE LOS MEDIOS EXTERIORES (= THE POWER OF IRL MEDIA) ===== -->
+  <section id="nosotros" class="section-poder-irl">
+    <div class="poder-irl-img">
+      <img src="images/sarmiento.jpg" alt="Publicidad exterior en Buenos Aires">
+    </div>
+    <div class="poder-irl-content">
+      <div class="poder-irl-tabs">
+        <button class="poder-tab active" data-tab="quienes">Quiénes somos</button>
+        <button class="poder-tab" data-tab="audiencia">Audiencia</button>
+        <button class="poder-tab" data-tab="innovacion">Innovación</button>
+      </div>
+      <h2 class="poder-irl-title">EL PODER DE<br>LOS MEDIOS<br>EXTERIORES</h2>
+      <div class="poder-tab-body" id="tab-quienes">
+        <p>Diseñados para hacer más que ser vistos. Creamos experiencias reales que impactan, influyen y generan resultados. A través de creatividad, entornos de alto impacto y datos de audiencia, ayudamos a las marcas a moverse y dejar impresiones duraderas.</p>
+        <a href="https://wa.me/541138862003" target="_blank" class="poder-link">/ Sobre Nosotros</a>
+      </div>
+      <div class="poder-tab-body d-none" id="tab-audiencia">
+        <p>Llegamos a millones de personas en sus recorridos diarios. En Pinamar durante la temporada y en CABA todo el año, tu marca impacta a las audiencias correctas en el momento indicado, sin filtros ni algoritmos.</p>
+        <a href="#cobertura" class="poder-link">/ Ver Cobertura</a>
+      </div>
+      <div class="poder-tab-body d-none" id="tab-innovacion">
+        <p>Pantallas LED de última generación, contenido dinámico en tiempo real. Combinamos tecnología y creatividad para que tu campaña sea más inteligente, memorable y efectiva.</p>
+        <a href="#formatos" class="poder-link">/ Ver Formatos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EL PODER DE MOVERSE — SECCIÓN CON BILLBOARDS ANIMADOS ===== -->
+  <!-- Este es el efecto de "nubes/formas con movimiento" inspirado en outfront.com -->
+  <section id="power-move" class="section-power-move">
+
+    <!-- Fondo animado: formas geométricas de billboards flotantes -->
+    <div class="bb-bg" aria-hidden="true">
+      <!-- Forma diagonal grande de fondo -->
+      <div class="bb-slash bb-slash-1"></div>
+      <div class="bb-slash bb-slash-2"></div>
+
+      <!-- Grid de paneles tipo billboard (efecto profundidad y movimiento) -->
+      <div class="bb-grid" id="bb-grid">
+        <div class="bb-panel bb-p1"></div>
+        <div class="bb-panel bb-p2"></div>
+        <div class="bb-panel bb-p3"></div>
+        <div class="bb-panel bb-p4"></div>
+        <div class="bb-panel bb-p5"></div>
+        <div class="bb-panel bb-p6"></div>
+        <div class="bb-panel bb-p7"></div>
+        <div class="bb-panel bb-p8"></div>
+        <div class="bb-panel bb-p9"></div>
+        <div class="bb-panel bb-p10"></div>
+        <div class="bb-panel bb-p11"></div>
+        <div class="bb-panel bb-p12"></div>
+        <!-- Triángulos acento (las "puntas" que aparecen entre los paneles) -->
+        <div class="bb-tri bb-tri-1"></div>
+        <div class="bb-tri bb-tri-2"></div>
+        <div class="bb-tri bb-tri-3"></div>
+        <div class="bb-tri bb-tri-4"></div>
+      </div>
+    </div>
+
+    <div class="container power-move-inner">
+      <div class="row">
+        <div class="col-lg-5 col-md-7">
+          <h2 class="power-move-title">EL PODER<br>DE<br>MOVERSE</h2>
+          <p class="power-move-sub">
+            Nuestros medios alcanzan a millones de personas en Pinamar y CABA semanalmente.*
+            Una gran audiencia — y miles de segmentos dentro de ella.
+          </p>
+          <p class="power-move-source">*FUENTE: DATOS PROPIOS, 2024</p>
+
+          <!-- Buscador estilo outfront.com -->
+          <div class="power-search-wrap">
+            <a href="https://wa.me/541138862003?text=Hola%21%20Quiero%20consultar%20disponibilidad." target="_blank" class="power-search">
+              <i class="bi bi-search power-search-icon"></i>
+              <span class="power-search-placeholder">Buscá por ciudad o zona (ej: Pinamar, Palermo…)</span>
+            </a>
+          </div>
+
+          <a href="#cobertura" class="power-move-explore">/ Explorar todos los mercados</a>
+        </div>
+      </div>
+
+      <!-- Stats grandes estilo Outfront (en violeta) -->
+      <div class="row power-stats-row">
+        <div class="col-md-4">
+          <div class="power-stat-block">
+            <div class="power-stat-num" data-count="+500">+500</div>
+            <p class="power-stat-src">Datos propios, 2024</p>
+            <p class="power-stat-label">Espacios activos</p>
+            <a href="#formatos" class="power-stat-link">/ Explorar Medios</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="power-stat-block">
+            <div class="power-stat-num">2M+</div>
+            <p class="power-stat-src">Datos propios, 2024</p>
+            <p class="power-stat-label">Impresiones semanales</p>
+            <a href="#cobertura" class="power-stat-link">/ Encontrá tu Audiencia</a>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="power-stat-block">
+            <div class="power-stat-num">+10</div>
+            <p class="power-stat-src">Años en el mercado</p>
+            <p class="power-stat-label">Años de experiencia</p>
+            <a href="https://wa.me/541138862003" target="_blank" class="power-stat-link">/ Hablar con un asesor</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== FORMATOS ===== -->
   <section id="formatos" class="section-light">
     <div class="container">
@@ -110,14 +214,10 @@
         <h2 class="section-title">Nuestros <span class="accent-text">Formatos</span></h2>
         <p class="section-sub">Elegí el espacio que mejor se adapta a tu campaña y objetivo.</p>
       </div>
-
       <div class="row g-4">
-
         <div class="col-md-6 col-lg-3">
-          <div class="formato-card" data-index="01">
-            <div class="formato-icon">
-              <i class="bi bi-map"></i>
-            </div>
+          <div class="formato-card">
+            <div class="formato-icon"><i class="bi bi-map"></i></div>
             <div class="formato-num">01</div>
             <h3 class="formato-title">Vallas Gigantes</h3>
             <p class="formato-desc">Máxima presencia en avenidas, autopistas y corredores de alto tránsito. El formato de mayor impacto visual.</p>
@@ -126,13 +226,10 @@
             </a>
           </div>
         </div>
-
         <div class="col-md-6 col-lg-3">
-          <div class="formato-card highlighted" data-index="02">
+          <div class="formato-card highlighted">
             <div class="formato-badge">MÁS PEDIDO</div>
-            <div class="formato-icon">
-              <i class="bi bi-display"></i>
-            </div>
+            <div class="formato-icon"><i class="bi bi-display"></i></div>
             <div class="formato-num">02</div>
             <h3 class="formato-title">Pantallas LED</h3>
             <p class="formato-desc">Contenido dinámico y rotativo las 24hs. Actualizá tu mensaje en tiempo real desde cualquier lugar.</p>
@@ -141,12 +238,9 @@
             </a>
           </div>
         </div>
-
         <div class="col-md-6 col-lg-3">
-          <div class="formato-card" data-index="03">
-            <div class="formato-icon">
-              <i class="bi bi-sign-stop"></i>
-            </div>
+          <div class="formato-card">
+            <div class="formato-icon"><i class="bi bi-sign-stop"></i></div>
             <div class="formato-num">03</div>
             <h3 class="formato-title">Refugios</h3>
             <p class="formato-desc">Alta frecuencia de contacto en paradas de colectivo. El usuario espera, tu marca habla.</p>
@@ -155,12 +249,9 @@
             </a>
           </div>
         </div>
-
         <div class="col-md-6 col-lg-3">
-          <div class="formato-card" data-index="04">
-            <div class="formato-icon">
-              <i class="bi bi-building"></i>
-            </div>
+          <div class="formato-card">
+            <div class="formato-icon"><i class="bi bi-building"></i></div>
             <div class="formato-num">04</div>
             <h3 class="formato-title">Mobiliario Urbano</h3>
             <p class="formato-desc">Presencia a nivel de los ojos en el corazón de la ciudad. Contacto cercano y continuo con tu audiencia.</p>
@@ -169,45 +260,12 @@
             </a>
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== STATS ===== -->
-  <section id="stats" class="section-accent">
-    <div class="container">
-      <div class="row g-4 text-center">
-        <div class="col-6 col-lg-3">
-          <div class="stat-item">
-            <div class="stat-num">+500</div>
-            <div class="stat-label">Espacios activos</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="stat-item">
-            <div class="stat-num">+10</div>
-            <div class="stat-label">Años de experiencia</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="stat-item">
-            <div class="stat-num">CABA</div>
-            <div class="stat-label">GBA e Interior</div>
-          </div>
-        </div>
-        <div class="col-6 col-lg-3">
-          <div class="stat-item">
-            <div class="stat-num">24/7</div>
-            <div class="stat-label">Tu marca siempre visible</div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== POR QUÉ NOSOTROS ===== -->
-  <section id="nosotros" class="section-light-alt">
+  <section class="section-light-alt">
     <div class="container">
       <div class="row align-items-center g-5">
         <div class="col-lg-5">
@@ -227,7 +285,7 @@
               <div class="feature-card">
                 <i class="bi bi-geo-alt-fill feature-icon"></i>
                 <h4>Ubicaciones premium</h4>
-                <p>Espacios en los puntos de mayor tráfico y visibilidad de Buenos Aires.</p>
+                <p>Espacios en los puntos de mayor tráfico y visibilidad de Pinamar y Buenos Aires.</p>
               </div>
             </div>
             <div class="col-sm-6">
@@ -330,7 +388,7 @@
               <li><i class="bi bi-check-circle-fill"></i> Av. Bunge y accesos principales</li>
               <li><i class="bi bi-check-circle-fill"></i> Zona comercial y gastronómica</li>
               <li><i class="bi bi-check-circle-fill"></i> Ruta Interbalnearia</li>
-              <li><i class="bi bi-check-circle-fill"></i> Carilo, Ostende y Valeria del Mar</li>
+              <li><i class="bi bi-check-circle-fill"></i> Cariló, Ostende y Valeria del Mar</li>
             </ul>
             <a href="https://wa.me/541138862003?text=Hola%21%20Me%20interesa%20un%20espacio%20en%20Pinamar." target="_blank" class="btn btn-cta-hero w-100 mt-3">
               <i class="bi bi-whatsapp me-1"></i> Ver disponibilidad
@@ -414,9 +472,7 @@
     <span class="wa-tooltip">¡Hablemos!</span>
   </a>
 
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Custom JS -->
   <script src="js/main.js"></script>
 </body>
 </html>

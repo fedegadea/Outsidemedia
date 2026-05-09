@@ -8,7 +8,7 @@ window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 50);
 }, { passive: true });
 
-// ── Scroll reveal (Outfront-style: sutil y limpio)
+// ── Scroll reveal
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -19,45 +19,14 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
 document.querySelectorAll(
-  '.formato-card, .feature-card, .step-card, .cobertura-card, .stat-item, .section-header'
+  '.formato-card, .feature-card, .step-card, .cobertura-card, .power-stat-block, .section-header'
 ).forEach((el, i) => {
   el.classList.add('reveal');
   el.style.transitionDelay = `${(i % 4) * 90}ms`;
   revealObserver.observe(el);
 });
 
-// ── Counter animado para los stats
-const counters = document.querySelectorAll('.stat-num');
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    const raw = el.textContent.trim();
-    const num = parseInt(raw.replace(/\D/g, ''));
-    if (!num) return;
-
-    const prefix = raw.startsWith('+') ? '+' : '';
-    const duration = 1600;
-    const steps = 50;
-    const stepVal = num / steps;
-    let current = 0;
-    const interval = setInterval(() => {
-      current += stepVal;
-      if (current >= num) {
-        el.textContent = prefix + num;
-        clearInterval(interval);
-      } else {
-        el.textContent = prefix + Math.floor(current);
-      }
-    }, duration / steps);
-
-    counterObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-
-counters.forEach(el => counterObserver.observe(el));
-
-// ── Smooth scroll para links del navbar
+// ── Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', (e) => {
     const target = document.querySelector(link.getAttribute('href'));
@@ -65,7 +34,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     e.preventDefault();
     const offset = nav.offsetHeight + 16;
     window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
-
     const collapse = document.getElementById('navMenu');
     if (collapse.classList.contains('show')) {
       bootstrap.Collapse.getInstance(collapse)?.hide();
@@ -73,7 +41,7 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
-// ── WhatsApp float: fade mientras scrollea
+// ── WhatsApp float fade en scroll
 let scrollTimer;
 const waFloat = document.getElementById('waFloat');
 window.addEventListener('scroll', () => {
@@ -84,9 +52,57 @@ window.addEventListener('scroll', () => {
   }, 350);
 }, { passive: true });
 
-// ── Ticker: pausa on hover
+// ── Ticker pausa on hover
 const ticker = document.querySelector('.ticker');
 if (ticker) {
   ticker.parentElement.addEventListener('mouseenter', () => ticker.style.animationPlayState = 'paused');
   ticker.parentElement.addEventListener('mouseleave', () => ticker.style.animationPlayState = 'running');
 }
+
+// ── Tabs de "El Poder de los Medios Exteriores"
+document.querySelectorAll('.poder-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tab = btn.dataset.tab;
+
+    // Toggle botones
+    document.querySelectorAll('.poder-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Toggle contenido
+    document.querySelectorAll('.poder-tab-body').forEach(body => {
+      body.classList.add('d-none');
+    });
+    const target = document.getElementById('tab-' + tab);
+    if (target) target.classList.remove('d-none');
+  });
+});
+
+// ── Parallax suave en billboards animados (el efecto "nube con mov")
+// Los paneles se mueven a distintas velocidades al hacer scroll
+const bbGrid  = document.getElementById('bb-grid');
+const bbSlash = document.querySelectorAll('.bb-slash');
+
+function onParallaxScroll() {
+  const section = document.getElementById('power-move');
+  if (!section) return;
+
+  const rect   = section.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight && rect.bottom > 0;
+  if (!inView) return;
+
+  const progress = -rect.top / section.offsetHeight; // 0 al entrar, ~1 al salir
+
+  // Grid de paneles: mueve hacia arriba suavemente
+  if (bbGrid) {
+    bbGrid.style.transform = `perspective(900px) rotateY(-6deg) translateY(${progress * -40}px)`;
+  }
+
+  // Slash de fondo: mueve más despacio (parallax diferencial)
+  bbSlash.forEach((el, i) => {
+    const speed = i === 0 ? -25 : -15;
+    el.style.transform = `skewX(-14deg) translateY(${progress * speed}px)`;
+  });
+}
+
+window.addEventListener('scroll', onParallaxScroll, { passive: true });
+onParallaxScroll(); // ejecutar al cargar
