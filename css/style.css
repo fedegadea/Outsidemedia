@@ -413,6 +413,7 @@ body {
   background: #efefef;
   padding: 130px 0 100px;
   overflow: hidden;
+  clip-path: inset(0);       /* fix: properly clips 3D-transformed billboard panels */
   border-top: 1px solid #e0e0e0;
 }
 
@@ -531,6 +532,7 @@ body {
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  clip-path: inset(0);       /* fix: clips 3D-transformed children properly */
   z-index: 1;
 }
 
@@ -565,7 +567,7 @@ body {
 .bb-grid {
   position: absolute;
   right: 0;
-  top: 0;
+  top: 40px;                 /* offset to prevent top visual bleed from 3D rotation */
   width: 60%;
   height: 100%;
   transform: perspective(900px) rotateY(-6deg);
@@ -831,16 +833,16 @@ body {
 ============================================= */
 @media (max-width: 991px) {
   .section-poder-irl { grid-template-columns: 1fr; }
-  .poder-irl-img { height: 350px; }
-  .poder-irl-img img { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
-  .poder-irl-content { padding: 60px 30px; }
+  .poder-irl-img { height: 400px; }
+  .poder-irl-img img { clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%); }
+  .poder-irl-content { padding: 60px 40px; }
 
-  .bb-grid { width: 80%; }
+  .bb-grid { width: 80%; top: 30px; }
   .bb-slash-1, .bb-slash-2 { width: 80%; }
 
-  .section-light, .section-light-alt { padding: 90px 0; }
-  .section-power-move { padding: 90px 0 70px; }
-  #contacto { padding: 110px 0; background-attachment: scroll; }
+  .section-light, .section-light-alt { padding: 80px 0; }
+  .section-power-move { padding: 80px 0 60px; }
+  #contacto { padding: 100px 0; background-attachment: scroll; }
 
   .navbar-collapse {
     background: rgba(6,6,6,0.97);
@@ -850,15 +852,30 @@ body {
   }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .btn-outline-hero { margin-left: 0 !important; }
+
+  /* Step cards: extra top space so the badge doesn't overlap section header */
+  .section-light .row:has(.step-card) { padding-top: 20px; }
+}
+
+@media (max-width: 768px) {
+  .section-light, .section-light-alt { padding: 70px 0; }
+  .section-power-move { padding: 70px 0 50px; }
+  #contacto { padding: 80px 0; }
+  .section-header { margin-bottom: 2.5rem !important; }
+  .poder-irl-content { padding: 50px 24px; }
+  .poder-irl-img { height: 320px; }
+  .power-stats-row { margin-top: 3rem; }
 }
 
 @media (max-width: 576px) {
-  .hero-title       { font-size: 3.5rem; }
-  .cta-title        { font-size: 2.4rem; }
-  .power-move-title { font-size: 4rem; }
-  .power-stat-num   { font-size: 3.5rem; }
-  .poder-irl-title  { font-size: 3rem; }
+  .hero-title       { font-size: 3.2rem; }
+  .cta-title        { font-size: 2.2rem; }
+  .power-move-title { font-size: 3.5rem; }
+  .power-stat-num   { font-size: 3rem; }
+  .poder-irl-title  { font-size: 2.8rem; }
   .whatsapp-float   { bottom: 1.2rem; right: 1.2rem; }
   .wa-tooltip       { display: none; }
   .bb-grid          { display: none; }
+  .section-light, .section-light-alt { padding: 60px 0; }
+  .section-power-move { padding: 60px 0 40px; }
 }
