@@ -733,6 +733,9 @@ body {
 }
 .cobertura-card.highlighted:hover { box-shadow: 0 16px 44px rgba(91,14,138,0.16); }
 .cobertura-num { font-size: 3.2rem; font-weight: 900; color: var(--accent); opacity: 0.15; line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
+.cobertura-num-icon { opacity: 1; display: flex; align-items: center; margin-bottom: 0.6rem; }
+.cobertura-pinecone { width: 56px; height: 70px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25)); transition: transform .35s ease; }
+.cobertura-card:hover .cobertura-pinecone { transform: rotate(-8deg) scale(1.08); }
 .cobertura-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--text-dark); margin-bottom: 1.2rem; }
 .cobertura-list { list-style: none; padding: 0; margin: 0; }
 .cobertura-list li { font-size: 0.88rem; color: var(--text-body); padding: 0.45rem 0; display: flex; align-items: center; gap: 0.6rem; border-bottom: 1px solid var(--light-border); }
