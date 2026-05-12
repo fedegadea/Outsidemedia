@@ -160,7 +160,9 @@ body {
 }
 .brand-outside { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: 0.04em; }
 .brand-media   { font-size: 1.3rem; font-weight: 900; color: var(--accent-light); letter-spacing: 0.04em; }
-.navbar-brand  { text-decoration: none; }
+.navbar-brand  { text-decoration: none; display: flex; align-items: center; gap: 0.55rem; }
+.brand-pinecone { width: 30px; height: 40px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.45)); transition: transform .35s ease; }
+.navbar-brand:hover .brand-pinecone { transform: rotate(-10deg); }
 
 .navbar-nav .nav-link {
   color: rgba(255,255,255,0.75) !important;

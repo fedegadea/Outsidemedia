@@ -1,49 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 100" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120">
   <defs>
-    <radialGradient id="pcScale" cx="50%" cy="35%" r="65%">
-      <stop offset="0%" stop-color="#c08755"/>
-      <stop offset="55%" stop-color="#8a5326"/>
-      <stop offset="100%" stop-color="#4a2a10"/>
-    </radialGradient>
-    <linearGradient id="pcStem" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stop-color="#4a3520"/>
-      <stop offset="100%" stop-color="#2a1d10"/>
+    <!-- Gradiente de cada escama: punta clara arriba, base oscura abajo (donde se mete bajo la siguiente) -->
+    <linearGradient id="sg" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#f0cb95"/>
+      <stop offset="25%" stop-color="#c48a4a"/>
+      <stop offset="65%" stop-color="#6e4020"/>
+      <stop offset="100%" stop-color="#28160a"/>
     </linearGradient>
+    <!-- Highlight central de cada escama -->
+    <radialGradient id="sh" cx="50%" cy="32%" r="48%">
+      <stop offset="0%" stop-color="#fae0b0" stop-opacity="0.65"/>
+      <stop offset="55%" stop-color="#fae0b0" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#fae0b0" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Sombra base del cuerpo (para unidad cuando alguna escama no cubre del todo) -->
+    <radialGradient id="bs" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#3a2210"/>
+      <stop offset="100%" stop-color="#0a0502"/>
+    </radialGradient>
+    <!-- Sombra que cae al piso -->
+    <radialGradient id="gr" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Una escama reutilizable -->
+    <g id="scale">
+      <path d="M-9 5 Q-10 -2 -5 -7 Q0 -9 5 -7 Q10 -2 9 5 Q4.5 7 0 7 Q-4.5 7 -9 5 Z" fill="url(#sg)" stroke="#15080a" stroke-width="0.35" stroke-opacity="0.8"/>
+      <ellipse cx="0" cy="-2.5" rx="4.5" ry="2.8" fill="url(#sh)"/>
+      <!-- Línea central sutil que simula la quilla de la escama -->
+      <path d="M0 -7 Q0.2 -1 0 5" stroke="#1a0b04" stroke-width="0.25" stroke-opacity="0.5" fill="none"/>
+    </g>
   </defs>
-  <!-- stem -->
-  <rect x="38.5" y="4" width="3" height="9" rx="1.5" fill="url(#pcStem)"/>
-  <!-- scales arranged in offset rows, top → bottom, narrowing into teardrop -->
-  <!-- row 1 (top) -->
-  <ellipse cx="40" cy="16" rx="6" ry="5" fill="url(#pcScale)"/>
-  <!-- row 2 -->
-  <ellipse cx="32" cy="22" rx="7" ry="5.5" fill="url(#pcScale)"/>
-  <ellipse cx="48" cy="22" rx="7" ry="5.5" fill="url(#pcScale)"/>
-  <!-- row 3 -->
-  <ellipse cx="26" cy="30" rx="8" ry="6" fill="url(#pcScale)"/>
-  <ellipse cx="40" cy="30" rx="8" ry="6" fill="url(#pcScale)"/>
-  <ellipse cx="54" cy="30" rx="8" ry="6" fill="url(#pcScale)"/>
-  <!-- row 4 -->
-  <ellipse cx="22" cy="40" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="34" cy="40" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="46" cy="40" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="58" cy="40" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <!-- row 5 -->
-  <ellipse cx="20" cy="51" rx="9" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="32" cy="51" rx="9" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="44" cy="51" rx="9" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="56" cy="51" rx="9" ry="6.5" fill="url(#pcScale)"/>
-  <!-- row 6 -->
-  <ellipse cx="23" cy="62" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="35" cy="62" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="47" cy="62" rx="8.5" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="58" cy="62" rx="8" ry="6" fill="url(#pcScale)"/>
-  <!-- row 7 (narrowing) -->
-  <ellipse cx="27" cy="73" rx="7.5" ry="6" fill="url(#pcScale)"/>
-  <ellipse cx="40" cy="73" rx="8" ry="6.5" fill="url(#pcScale)"/>
-  <ellipse cx="53" cy="73" rx="7.5" ry="6" fill="url(#pcScale)"/>
-  <!-- row 8 -->
-  <ellipse cx="32" cy="83" rx="7" ry="5.5" fill="url(#pcScale)"/>
-  <ellipse cx="46" cy="83" rx="7" ry="5.5" fill="url(#pcScale)"/>
-  <!-- row 9 (tip) -->
-  <ellipse cx="39" cy="92" rx="6.5" ry="5" fill="url(#pcScale)"/>
+
+  <!-- Sombra suelo -->
+  <ellipse cx="46" cy="116" rx="22" ry="3" fill="url(#gr)"/>
+
+  <!-- Tallo + pinche superior -->
+  <path d="M44.5 4 L45.5 4 L45.5 13 L44.5 13 Z" fill="#2a1a0a"/>
+  <path d="M43.5 3.5 Q45 2 46.5 3.5 L45 5 Z" fill="#1a0a05"/>
+
+  <!-- Silueta del cuerpo (teardrop) — base oscura por si alguna juntura queda visible -->
+  <path d="M45 14 C22 16 11 42 14 70 C18 100 33 115 45 117 C57 115 72 100 76 70 C79 42 68 16 45 14 Z" fill="url(#bs)"/>
+
+  <!-- ESCAMAS — orden bottom→top así las de arriba tapan parcialmente las de abajo (overlap natural) -->
+
+  <!-- punta inferior -->
+  <use href="#scale" transform="translate(45 108) scale(0.6)"/>
+
+  <!-- fila 8 (cerca de la punta) -->
+  <use href="#scale" transform="translate(37 100) scale(0.72)"/>
+  <use href="#scale" transform="translate(53 100) scale(0.72)"/>
+
+  <!-- fila 7 -->
+  <use href="#scale" transform="translate(30 90) scale(0.82)"/>
+  <use href="#scale" transform="translate(45 90) scale(0.82)"/>
+  <use href="#scale" transform="translate(60 90) scale(0.82)"/>
+
+  <!-- fila 6 (offset) -->
+  <use href="#scale" transform="translate(24 79) scale(0.9)"/>
+  <use href="#scale" transform="translate(38 79) scale(0.9)"/>
+  <use href="#scale" transform="translate(52 79) scale(0.9)"/>
+  <use href="#scale" transform="translate(66 79) scale(0.9)"/>
+
+  <!-- fila 5 (la más ancha) -->
+  <use href="#scale" transform="translate(20 67) scale(0.95)"/>
+  <use href="#scale" transform="translate(33 67) scale(0.95)"/>
+  <use href="#scale" transform="translate(46 67) scale(0.95)"/>
+  <use href="#scale" transform="translate(59 67) scale(0.95)"/>
+  <use href="#scale" transform="translate(72 67) scale(0.95)"/>
+
+  <!-- fila 4 (offset) -->
+  <use href="#scale" transform="translate(22 55) scale(0.92)"/>
+  <use href="#scale" transform="translate(35 55) scale(0.92)"/>
+  <use href="#scale" transform="translate(48 55) scale(0.92)"/>
+  <use href="#scale" transform="translate(61 55) scale(0.92)"/>
+  <use href="#scale" transform="translate(74 55) scale(0.85)"/>
+
+  <!-- fila 3 -->
+  <use href="#scale" transform="translate(25 44) scale(0.85)"/>
+  <use href="#scale" transform="translate(38 44) scale(0.85)"/>
+  <use href="#scale" transform="translate(51 44) scale(0.85)"/>
+  <use href="#scale" transform="translate(64 44) scale(0.85)"/>
+
+  <!-- fila 2 -->
+  <use href="#scale" transform="translate(30 34) scale(0.78)"/>
+  <use href="#scale" transform="translate(43 34) scale(0.78)"/>
+  <use href="#scale" transform="translate(56 34) scale(0.78)"/>
+
+  <!-- fila 1 (arriba) -->
+  <use href="#scale" transform="translate(36 25) scale(0.68)"/>
+  <use href="#scale" transform="translate(50 25) scale(0.68)"/>
+
+  <!-- corona superior -->
+  <use href="#scale" transform="translate(45 18) scale(0.55)"/>
+
+  <!-- Sombra lateral derecha (toque de profundidad global) -->
+  <path d="M65 30 C72 50 73 80 60 105 C70 95 78 70 76 50 C73 40 70 33 65 30 Z" fill="#000" opacity="0.18"/>
 </svg>
