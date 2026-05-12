@@ -1,99 +1,140 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 120">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 130">
   <defs>
-    <!-- Gradiente de cada escama: punta clara arriba, base oscura abajo (donde se mete bajo la siguiente) -->
-    <linearGradient id="sg" x1="50%" y1="0%" x2="50%" y2="100%">
-      <stop offset="0%" stop-color="#f0cb95"/>
-      <stop offset="25%" stop-color="#c48a4a"/>
-      <stop offset="65%" stop-color="#6e4020"/>
-      <stop offset="100%" stop-color="#28160a"/>
+    <!-- Textura sutil (ruido fractal aplicado solo a las escamas para look maderoso) -->
+    <filter id="woodTex" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
+      <feColorMatrix in="n" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.35 0" result="nf"/>
+      <feComposite in="nf" in2="SourceGraphic" operator="in" result="masked"/>
+      <feBlend in="SourceGraphic" in2="masked" mode="multiply"/>
+    </filter>
+
+    <!-- Gradiente del cuerpo de la escama (medio-marrón a sombra profunda abajo) -->
+    <linearGradient id="sbody" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%"  stop-color="#a06a3a"/>
+      <stop offset="55%" stop-color="#5e3a1c"/>
+      <stop offset="100%" stop-color="#1c0e05"/>
     </linearGradient>
-    <!-- Highlight central de cada escama -->
-    <radialGradient id="sh" cx="50%" cy="32%" r="48%">
-      <stop offset="0%" stop-color="#fae0b0" stop-opacity="0.65"/>
-      <stop offset="55%" stop-color="#fae0b0" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#fae0b0" stop-opacity="0"/>
+
+    <!-- Umbo: la puntita brillante de cada escama -->
+    <radialGradient id="umbo" cx="50%" cy="40%" r="55%">
+      <stop offset="0%"  stop-color="#d8a26c"/>
+      <stop offset="45%" stop-color="#8a5a2c"/>
+      <stop offset="100%" stop-color="#1a0a04" stop-opacity="0.9"/>
     </radialGradient>
-    <!-- Sombra base del cuerpo (para unidad cuando alguna escama no cubre del todo) -->
-    <radialGradient id="bs" cx="50%" cy="50%" r="55%">
-      <stop offset="0%" stop-color="#3a2210"/>
-      <stop offset="100%" stop-color="#0a0502"/>
+
+    <!-- Sombra bajo el umbo (le da la sensación de relieve) -->
+    <radialGradient id="ushadow" cx="50%" cy="60%" r="40%">
+      <stop offset="0%"  stop-color="#1a0a04" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#1a0a04" stop-opacity="0"/>
     </radialGradient>
-    <!-- Sombra que cae al piso -->
-    <radialGradient id="gr" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#000" stop-opacity="0.35"/>
+
+    <!-- Sombra al piso -->
+    <radialGradient id="ground" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#000" stop-opacity="0.45"/>
       <stop offset="100%" stop-color="#000" stop-opacity="0"/>
     </radialGradient>
-    <!-- Una escama reutilizable -->
-    <g id="scale">
-      <path d="M-9 5 Q-10 -2 -5 -7 Q0 -9 5 -7 Q10 -2 9 5 Q4.5 7 0 7 Q-4.5 7 -9 5 Z" fill="url(#sg)" stroke="#15080a" stroke-width="0.35" stroke-opacity="0.8"/>
-      <ellipse cx="0" cy="-2.5" rx="4.5" ry="2.8" fill="url(#sh)"/>
-      <!-- Línea central sutil que simula la quilla de la escama -->
-      <path d="M0 -7 Q0.2 -1 0 5" stroke="#1a0b04" stroke-width="0.25" stroke-opacity="0.5" fill="none"/>
+
+    <!-- UNA ESCAMA: cuerpo + umbo + brillito + sombra -->
+    <g id="ps">
+      <!-- Cuerpo principal: rombo redondeado con borde oscuro fuerte -->
+      <path d="M-9.5 3.5 Q-11 -2 -6 -7 Q0 -9 6 -7 Q11 -2 9.5 3.5 Q5 7.5 0 8 Q-5 7.5 -9.5 3.5 Z"
+            fill="url(#sbody)" stroke="#0a0402" stroke-width="0.7" stroke-linejoin="round"/>
+      <!-- Sombra interior bajo el umbo -->
+      <ellipse cx="0" cy="3" rx="6" ry="2.5" fill="url(#ushadow)"/>
+      <!-- Umbo (la puntita levantada) -->
+      <ellipse cx="0" cy="-1.5" rx="3.5" ry="2.7" fill="url(#umbo)"/>
+      <!-- Aro oscuro alrededor del umbo (lo separa del cuerpo) -->
+      <ellipse cx="0" cy="-1.5" rx="3.5" ry="2.7" fill="none" stroke="#1a0a04" stroke-width="0.35" stroke-opacity="0.7"/>
+      <!-- Brillito especular en el umbo -->
+      <ellipse cx="-0.8" cy="-2.6" rx="1.3" ry="0.8" fill="#f0d3a4" opacity="0.7"/>
     </g>
   </defs>
 
-  <!-- Sombra suelo -->
-  <ellipse cx="46" cy="116" rx="22" ry="3" fill="url(#gr)"/>
+  <!-- Sombra en el piso -->
+  <ellipse cx="50" cy="125" rx="26" ry="3.5" fill="url(#ground)"/>
 
-  <!-- Tallo + pinche superior -->
-  <path d="M44.5 4 L45.5 4 L45.5 13 L44.5 13 Z" fill="#2a1a0a"/>
-  <path d="M43.5 3.5 Q45 2 46.5 3.5 L45 5 Z" fill="#1a0a05"/>
+  <!-- Tallo con cogollito -->
+  <g transform="translate(50 3)">
+    <path d="M-1.2 0 L1.2 0 L1 12 L-1 12 Z" fill="#2a1a0a"/>
+    <path d="M-3 1 Q0 -2 3 1 L2 3 Q0 1.5 -2 3 Z" fill="#3a2515"/>
+    <path d="M-1 0 Q-0.5 5 0 10 Q0.5 5 1 0" stroke="#1a0a05" stroke-width="0.4" fill="none" opacity="0.6"/>
+  </g>
 
-  <!-- Silueta del cuerpo (teardrop) — base oscura por si alguna juntura queda visible -->
-  <path d="M45 14 C22 16 11 42 14 70 C18 100 33 115 45 117 C57 115 72 100 76 70 C79 42 68 16 45 14 Z" fill="url(#bs)"/>
+  <!-- Silueta del cuerpo (oscuro, queda visible solo en los huecos entre escamas) -->
+  <path d="M50 13 C24 15 11 43 15 73 C20 106 38 123 50 124 C62 123 80 106 85 73 C89 43 76 15 50 13 Z" fill="#080402"/>
 
-  <!-- ESCAMAS — orden bottom→top así las de arriba tapan parcialmente las de abajo (overlap natural) -->
+  <!-- ════════════ ESCAMAS — capa con textura ════════════ -->
+  <g filter="url(#woodTex)">
 
-  <!-- punta inferior -->
-  <use href="#scale" transform="translate(45 108) scale(0.6)"/>
+    <!-- Punta inferior -->
+    <use href="#ps" transform="translate(50 116) scale(0.55) rotate(0)"/>
 
-  <!-- fila 8 (cerca de la punta) -->
-  <use href="#scale" transform="translate(37 100) scale(0.72)"/>
-  <use href="#scale" transform="translate(53 100) scale(0.72)"/>
+    <!-- Fila 9 (cerca de la punta) -->
+    <use href="#ps" transform="translate(40 109) scale(0.68) rotate(-8)"/>
+    <use href="#ps" transform="translate(60 109) scale(0.68) rotate(8)"/>
 
-  <!-- fila 7 -->
-  <use href="#scale" transform="translate(30 90) scale(0.82)"/>
-  <use href="#scale" transform="translate(45 90) scale(0.82)"/>
-  <use href="#scale" transform="translate(60 90) scale(0.82)"/>
+    <!-- Fila 8 -->
+    <use href="#ps" transform="translate(31 100) scale(0.78) rotate(-12)"/>
+    <use href="#ps" transform="translate(50 101) scale(0.82)"/>
+    <use href="#ps" transform="translate(69 100) scale(0.78) rotate(12)"/>
 
-  <!-- fila 6 (offset) -->
-  <use href="#scale" transform="translate(24 79) scale(0.9)"/>
-  <use href="#scale" transform="translate(38 79) scale(0.9)"/>
-  <use href="#scale" transform="translate(52 79) scale(0.9)"/>
-  <use href="#scale" transform="translate(66 79) scale(0.9)"/>
+    <!-- Fila 7 (offset) -->
+    <use href="#ps" transform="translate(24 90) scale(0.85) rotate(-15)"/>
+    <use href="#ps" transform="translate(41 91) scale(0.9) rotate(-5)"/>
+    <use href="#ps" transform="translate(59 91) scale(0.9) rotate(5)"/>
+    <use href="#ps" transform="translate(76 90) scale(0.85) rotate(15)"/>
 
-  <!-- fila 5 (la más ancha) -->
-  <use href="#scale" transform="translate(20 67) scale(0.95)"/>
-  <use href="#scale" transform="translate(33 67) scale(0.95)"/>
-  <use href="#scale" transform="translate(46 67) scale(0.95)"/>
-  <use href="#scale" transform="translate(59 67) scale(0.95)"/>
-  <use href="#scale" transform="translate(72 67) scale(0.95)"/>
+    <!-- Fila 6 -->
+    <use href="#ps" transform="translate(19 79) scale(0.92) rotate(-18)"/>
+    <use href="#ps" transform="translate(34 80) scale(0.95) rotate(-8)"/>
+    <use href="#ps" transform="translate(50 80) scale(0.98)"/>
+    <use href="#ps" transform="translate(66 80) scale(0.95) rotate(8)"/>
+    <use href="#ps" transform="translate(81 79) scale(0.92) rotate(18)"/>
 
-  <!-- fila 4 (offset) -->
-  <use href="#scale" transform="translate(22 55) scale(0.92)"/>
-  <use href="#scale" transform="translate(35 55) scale(0.92)"/>
-  <use href="#scale" transform="translate(48 55) scale(0.92)"/>
-  <use href="#scale" transform="translate(61 55) scale(0.92)"/>
-  <use href="#scale" transform="translate(74 55) scale(0.85)"/>
+    <!-- Fila 5 (la más ancha) -->
+    <use href="#ps" transform="translate(18 67) scale(0.95) rotate(-20)"/>
+    <use href="#ps" transform="translate(31 68) scale(1.0) rotate(-10)"/>
+    <use href="#ps" transform="translate(45 68) scale(1.02) rotate(-3)"/>
+    <use href="#ps" transform="translate(55 68) scale(1.02) rotate(3)"/>
+    <use href="#ps" transform="translate(69 68) scale(1.0) rotate(10)"/>
+    <use href="#ps" transform="translate(82 67) scale(0.95) rotate(20)"/>
 
-  <!-- fila 3 -->
-  <use href="#scale" transform="translate(25 44) scale(0.85)"/>
-  <use href="#scale" transform="translate(38 44) scale(0.85)"/>
-  <use href="#scale" transform="translate(51 44) scale(0.85)"/>
-  <use href="#scale" transform="translate(64 44) scale(0.85)"/>
+    <!-- Fila 4 (offset) -->
+    <use href="#ps" transform="translate(20 55) scale(0.93) rotate(-18)"/>
+    <use href="#ps" transform="translate(34 56) scale(0.98) rotate(-8)"/>
+    <use href="#ps" transform="translate(50 56) scale(1.0)"/>
+    <use href="#ps" transform="translate(66 56) scale(0.98) rotate(8)"/>
+    <use href="#ps" transform="translate(80 55) scale(0.93) rotate(18)"/>
 
-  <!-- fila 2 -->
-  <use href="#scale" transform="translate(30 34) scale(0.78)"/>
-  <use href="#scale" transform="translate(43 34) scale(0.78)"/>
-  <use href="#scale" transform="translate(56 34) scale(0.78)"/>
+    <!-- Fila 3 -->
+    <use href="#ps" transform="translate(24 44) scale(0.88) rotate(-15)"/>
+    <use href="#ps" transform="translate(38 45) scale(0.92) rotate(-6)"/>
+    <use href="#ps" transform="translate(52 45) scale(0.95) rotate(2)"/>
+    <use href="#ps" transform="translate(65 44) scale(0.9) rotate(12)"/>
+    <use href="#ps" transform="translate(77 43) scale(0.85) rotate(18)"/>
 
-  <!-- fila 1 (arriba) -->
-  <use href="#scale" transform="translate(36 25) scale(0.68)"/>
-  <use href="#scale" transform="translate(50 25) scale(0.68)"/>
+    <!-- Fila 2 -->
+    <use href="#ps" transform="translate(29 33) scale(0.78) rotate(-12)"/>
+    <use href="#ps" transform="translate(43 34) scale(0.83) rotate(-3)"/>
+    <use href="#ps" transform="translate(57 34) scale(0.83) rotate(5)"/>
+    <use href="#ps" transform="translate(71 33) scale(0.78) rotate(15)"/>
 
-  <!-- corona superior -->
-  <use href="#scale" transform="translate(45 18) scale(0.55)"/>
+    <!-- Fila 1 (arriba) -->
+    <use href="#ps" transform="translate(35 24) scale(0.65) rotate(-10)"/>
+    <use href="#ps" transform="translate(50 25) scale(0.7)"/>
+    <use href="#ps" transform="translate(65 24) scale(0.65) rotate(10)"/>
 
-  <!-- Sombra lateral derecha (toque de profundidad global) -->
-  <path d="M65 30 C72 50 73 80 60 105 C70 95 78 70 76 50 C73 40 70 33 65 30 Z" fill="#000" opacity="0.18"/>
+    <!-- Corona superior -->
+    <use href="#ps" transform="translate(50 17) scale(0.5)"/>
+
+  </g>
+
+  <!-- Sombra lateral derecha (profundidad global, como si la luz viniera de la izquierda) -->
+  <path d="M68 25 C76 50 78 85 62 110 C73 102 82 78 80 50 C77 38 73 30 68 25 Z" fill="#000" opacity="0.22"/>
+  <!-- Reflejo lateral izquierdo sutil -->
+  <path d="M28 30 C22 55 22 90 35 110 C26 100 19 80 21 55 C23 45 26 35 28 30 Z" fill="#f0d3a4" opacity="0.06"/>
 </svg>
