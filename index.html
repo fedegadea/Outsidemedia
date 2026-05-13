@@ -19,7 +19,6 @@
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="images/pinecone.svg" alt="" class="brand-pinecone">
         <span class="brand-outside">OUTSIDE</span><span class="brand-media">MEDIA</span>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
@@ -50,6 +49,52 @@
     <!-- Blob blanco estilo Outfront -->
     <svg class="hero-blob" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M0,0 L60,0 C70,6 64,16 70,28 C76,40 66,50 72,63 C77,74 68,84 62,92 C59,96 56,98 54,100 L0,100 Z" fill="white"/>
+    </svg>
+    <!-- Silueta animada de piña — efecto background outfront -->
+    <svg class="hero-pinecone-sil" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Tallo -->
+      <rect x="96" y="2" width="8" height="22" rx="3" fill="white"/>
+      <path d="M88 10 Q100 2 112 10 L108 18 Q100 12 92 18 Z" fill="white"/>
+      <!-- Cuerpo de la piña — silueta orgánica -->
+      <path d="
+        M 100 28
+        C 84 28  64 36  54 52
+        C 44 68  42 84  44 100
+        C 46 116 50 130 56 144
+        C 62 158 70 170 78 180
+        C 84 188 90 194 96 198
+        C 98 199 99 200 100 200
+        C 101 200 102 199 104 198
+        C 110 194 116 188 122 180
+        C 130 170 138 158 144 144
+        C 150 130 154 116 156 100
+        C 158 84  156 68  146 52
+        C 136 36  116 28  100 28 Z
+      " fill="white"/>
+      <!-- Irregularidades de las escamas en el contorno -->
+      <path d="
+        M 100 28
+        C 90 30 76 34 66 42
+        C 58 36 54 44 50 52
+        C 44 62 42 74 42 86
+        C 42 92 43 98 44 104
+        C 40 108 42 116 44 120
+        C 46 130 50 140 56 150
+        C 52 154 56 162 60 168
+        C 64 174 70 182 76 188
+        C 80 193 86 197 92 199
+        C 96 200.5 98 201 100 201
+        C 102 201 104 200.5 108 199
+        C 114 197 120 193 124 188
+        C 130 182 136 174 140 168
+        C 144 162 148 154 144 150
+        C 150 140 154 130 156 120
+        C 158 116 160 108 156 104
+        C 157 98 158 92 158 86
+        C 158 74 156 62 150 52
+        C 146 44 142 36 134 42
+        C 124 34 110 30 100 28 Z
+      " fill="white" opacity="0.3"/>
     </svg>
     <div class="container hero-content">
       <div class="row">
@@ -387,7 +432,13 @@
         </div>
         <div class="col-md-5">
           <div class="cobertura-card highlighted">
-            <div class="cobertura-num cobertura-num-icon"><img src="images/pinecone.svg" alt="Pinamar" class="cobertura-pinecone"></div>
+            <div>
+            <svg class="cobertura-pinecone-sil" viewBox="0 0 200 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="96" y="2" width="8" height="22" rx="3"/>
+              <path d="M88 10 Q100 2 112 10 L108 18 Q100 12 92 18 Z"/>
+              <path d="M100 28 C84 28 64 36 54 52 C44 68 42 84 44 100 C46 116 50 130 56 144 C62 158 70 170 78 180 C84 188 90 194 96 198 C98 199 99 200 100 200 C101 200 102 199 104 198 C110 194 116 188 122 180 C130 170 138 158 144 144 C150 130 154 116 156 100 C158 84 156 68 146 52 C136 36 116 28 100 28 Z"/>
+            </svg>
+          </div>
             <h3>Pinamar</h3>
             <ul class="cobertura-list">
               <li><i class="bi bi-check-circle-fill"></i> Av. Bunge y accesos principales</li>
