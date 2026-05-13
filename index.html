@@ -51,6 +51,8 @@
       <defs>
         <mask id="pine-hole" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
           <rect width="100" height="100" fill="white"/>
+          <!-- Reposicionamiento: centro en (50,50) y 15% más grande desde el original (75,49) -->
+          <g transform="translate(50 50) scale(1.15) translate(-75 -49)">
           <g class="pine-cut">
 
             <!-- Tallo con agujas -->
@@ -168,6 +170,7 @@
             <ellipse cx="77"   cy="77.5" rx="1.2" ry="1.6" fill="white" opacity="0.88"/>
 
           </g>
+          </g><!-- /repositioning wrapper -->
         </mask>
       </defs>
       <rect width="100" height="100" fill="white" mask="url(#pine-hole)"/>

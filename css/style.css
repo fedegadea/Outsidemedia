@@ -160,7 +160,7 @@ body {
 }
 
 /* Logo: blanco sobre hero, negro al scrollear */
-.brand-outside { font-size: 1.3rem; font-weight: 900; color: #fff; letter-spacing: 0.04em; transition: color 0.4s; }
+.brand-outside { font-size: 1.3rem; font-weight: 900; color: #000; letter-spacing: 0.04em; transition: color 0.4s; }
 .brand-media   { font-size: 1.3rem; font-weight: 900; color: var(--accent); letter-spacing: 0.04em; }
 .navbar-brand  { text-decoration: none; display: flex; align-items: center; gap: 0.3rem; }
 
