@@ -810,6 +810,7 @@ body {
   border-top: 1px solid #161616;
 }
 .footer-brand  { margin-bottom: 0.75rem; }
+.footer-brand .brand-outside { color: #fff; }
 .footer-tagline { font-size: 0.85rem; color: #555; line-height: 1.6; }
 .footer-social { display: flex; gap: 0.75rem; margin-top: 1.25rem; }
 .footer-social a {
@@ -866,6 +867,111 @@ body {
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
 /* =============================================
+   SECCIÓN: SERVICIOS 3D STACK
+============================================= */
+.section-servicios {
+  background: var(--accent);
+  padding: 90px 0 110px;
+  overflow: hidden;
+}
+
+.serv-top {
+  padding: 0 6vw 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.serv-label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
+.serv-tagline {
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.serv-stack {
+  perspective: 900px;
+  perspective-origin: 50% -20%;
+  padding: 0 5vw;
+  text-align: right;
+}
+
+.serv-item {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: white;
+  text-decoration: none;
+  transition: color 0.35s ease, transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.35s ease;
+  transform-origin: right bottom;
+  will-change: transform;
+}
+
+.serv-item:nth-child(1) {
+  font-size: clamp(4.5rem, 12vw, 13rem);
+  transform: rotateX(6deg);
+}
+.serv-item:nth-child(2) {
+  font-size: clamp(3.8rem, 10vw, 11rem);
+  transform: rotateX(12deg);
+  opacity: 0.88;
+}
+.serv-item:nth-child(3) {
+  font-size: clamp(3rem, 8.5vw, 9.5rem);
+  transform: rotateX(18deg);
+  opacity: 0.76;
+}
+.serv-item:nth-child(4) {
+  font-size: clamp(2.5rem, 7vw, 8rem);
+  transform: rotateX(24deg);
+  opacity: 0.64;
+}
+
+.serv-item:hover {
+  color: #000;
+  transform: rotateX(-2deg) scale(1.04);
+  opacity: 1;
+}
+
+.serv-num {
+  font-size: 0.4em;
+  font-weight: 400;
+  opacity: 0.5;
+  vertical-align: super;
+  margin-right: 0.3em;
+  font-style: normal;
+}
+
+.serv-sub {
+  display: block;
+  font-size: 0.18em;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: opacity 0.3s;
+  margin-top: 0.3em;
+}
+
+.serv-item:hover .serv-sub {
+  opacity: 0.7;
+}
+
+/* =============================================
    RESPONSIVE
 ============================================= */
 @media (max-width: 991px) {
@@ -905,6 +1011,14 @@ body {
   .btn-outline-hero { margin-left: 0 !important; }
 
   .section-light .row:has(.step-card) { padding-top: 20px; }
+
+  /* Servicios 3D — tablet */
+  .serv-top { gap: 1.5rem; padding: 0 5vw 2rem; }
+  .serv-stack { padding: 0 4vw; }
+  .serv-item:nth-child(1) { transform: rotateX(4deg); }
+  .serv-item:nth-child(2) { transform: rotateX(8deg); }
+  .serv-item:nth-child(3) { transform: rotateX(13deg); }
+  .serv-item:nth-child(4) { transform: rotateX(18deg); }
 }
 
 @media (max-width: 768px) {
@@ -928,4 +1042,14 @@ body {
   .bb-grid          { display: none; }
   .section-light, .section-light-alt { padding: 60px 0; }
   .section-power-move { padding: 60px 0 40px; }
+
+  /* Servicios 3D — mobile */
+  .section-servicios { padding: 60px 0 80px; }
+  .serv-top { flex-direction: column; gap: 0.75rem; align-items: flex-start; padding: 0 6vw 1.5rem; }
+  .serv-stack { perspective: 600px; }
+  .serv-item:nth-child(1) { transform: rotateX(3deg); }
+  .serv-item:nth-child(2) { transform: rotateX(7deg); }
+  .serv-item:nth-child(3) { transform: rotateX(11deg); }
+  .serv-item:nth-child(4) { transform: rotateX(15deg); }
+  .serv-sub { display: none; }
 }
