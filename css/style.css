@@ -367,7 +367,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 600px;
-  border-top: 1px solid var(--light-border);
+  background: var(--accent);
 }
 
 .poder-irl-img {
@@ -873,6 +873,7 @@ body {
   background: var(--accent);
   padding: 90px 0 110px;
   overflow: hidden;
+  clip-path: inset(0);
 }
 
 .serv-top {
