@@ -12,10 +12,10 @@
   --light-alt-bg:  #ffffff;
   --light-border:  #e8e8e8;
   --light-card:    #ffffff;
-  --accent:        #e55018;
-  --accent-light:  #ff6f38;
-  --accent-dark:   #b83c0e;
-  --accent-glow:   rgba(229, 80, 24, 0.15);
+  --accent:        #64008F;
+  --accent-light:  #9B3DCC;
+  --accent-dark:   #4A006B;
+  --accent-glow:   rgba(100, 0, 143, 0.15);
   --text-dark:     #0f0f0f;
   --text-body:     #444444;
   --text-muted:    #888888;
@@ -102,7 +102,7 @@ body {
   background: var(--accent-dark);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(229, 80, 24, 0.3);
+  box-shadow: 0 8px 24px rgba(100, 0, 143, 0.3);
 }
 
 .btn-outline-hero {
@@ -118,7 +118,7 @@ body {
   text-decoration: none;
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
-.btn-outline-hero:hover { border-color: var(--accent); color: var(--accent); background: rgba(229,80,24,0.06); }
+.btn-outline-hero:hover { border-color: var(--accent); color: var(--accent); background: rgba(100,0,143,0.06); }
 
 .btn-cta-big {
   display: inline-flex;
@@ -138,7 +138,7 @@ body {
   background: var(--accent-dark);
   color: #fff;
   transform: translateY(-2px);
-  box-shadow: 0 12px 36px rgba(229, 80, 24, 0.35);
+  box-shadow: 0 12px 36px rgba(100, 0, 143, 0.35);
 }
 
 /* =============================================
@@ -196,6 +196,10 @@ body {
 /* =============================================
    HERO
 ============================================= */
+/* ─────────────────────────────────────────────
+   HERO — layout exacto Outfront.com
+   Fondo blanco | texto negro | video derecha | piña #64008F
+───────────────────────────────────────────── */
 #hero {
   position: relative;
   height: 100vh;
@@ -203,34 +207,43 @@ body {
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: var(--dark-bg);
+  background: #ffffff;
 }
+
+/* Video solo en el lado derecho, con fade suave hacia el blanco */
 .hero-video {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
+  position: absolute;
+  right: 0; top: 0;
+  width: 60%; height: 100%;
   object-fit: cover; object-position: center;
   z-index: 0;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 22%);
+  mask-image: linear-gradient(to right, transparent 0%, black 22%);
 }
-.hero-blob {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  z-index: 1;
-}
+
+/* El blob blanco ya no hace falta — el fondo blanco actúa como panel izquierdo */
+.hero-blob { display: none; }
+
 .hero-content { position: relative; z-index: 3; padding-top: 110px; }
 
-/* ── Silueta animada de piña en el hero ── */
+/* ── Silueta de piña — prominente, color exacto Outfront ── */
 .hero-pinecone-sil {
   position: absolute;
-  right: -2%;
+  right: 3%;
   top: 50%;
   transform: translateY(-50%);
   width: min(55vw, 660px);
   height: auto;
   z-index: 2;
-  opacity: 0.09;
+  opacity: 1;
   pointer-events: none;
   animation: pineFloat 10s ease-in-out infinite;
-  filter: drop-shadow(0 0 60px rgba(255,255,255,0.08));
+  filter: drop-shadow(0 0 70px rgba(100, 0, 143, 0.45));
+}
+/* Coloreamos la piña con el purple exacto de Outfront */
+.hero-pinecone-sil path,
+.hero-pinecone-sil rect {
+  fill: #64008F !important;
 }
 @keyframes pineFloat {
   0%   { transform: translateY(-50%) translateX(0px)   rotate(0deg); }
@@ -244,17 +257,16 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.22);
+  background: rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.14);
   border-radius: 2px;
   padding: 0.5rem 1.1rem;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.88);
+  color: rgba(0,0,0,0.7);
   margin-bottom: 2rem;
-  backdrop-filter: blur(8px);
   opacity: 0;
   animation: fadeUp 0.7s 0.3s forwards;
 }
@@ -273,12 +285,13 @@ body {
 
 .hero-title {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(4.5rem, 10vw, 9rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #000000;
   text-transform: uppercase;
+  letter-spacing: -0.04em;
   opacity: 0;
   animation: fadeUp 0.8s 0.5s forwards;
 }
@@ -286,7 +299,7 @@ body {
 
 .hero-sub {
   font-size: 1.05rem;
-  color: rgba(255,255,255,0.72);
+  color: var(--text-body);
   line-height: 1.8;
   margin-top: 2rem;
   max-width: 500px;
@@ -302,13 +315,13 @@ body {
   animation: fadeUp 0.8s 0.9s forwards;
 }
 .hero-actions .btn-outline-hero {
-  color: rgba(255,255,255,0.88);
-  border-color: rgba(255,255,255,0.4);
+  color: var(--text-dark);
+  border-color: rgba(0,0,0,0.3);
 }
 .hero-actions .btn-outline-hero:hover {
-  color: #fff;
+  color: var(--accent);
   border-color: var(--accent);
-  background: rgba(229,80,24,0.15);
+  background: rgba(100, 0, 143, 0.06);
 }
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(24px); }
@@ -673,8 +686,8 @@ body {
   overflow: hidden;
 }
 .formato-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.09); }
-.formato-card.highlighted { border-color: var(--accent); box-shadow: 0 4px 24px rgba(229,80,24,0.12); }
-.formato-card.highlighted:hover { box-shadow: 0 20px 50px rgba(229,80,24,0.18); }
+.formato-card.highlighted { border-color: var(--accent); box-shadow: 0 4px 24px rgba(100,0,143,0.12); }
+.formato-card.highlighted:hover { box-shadow: 0 20px 50px rgba(100,0,143,0.18); }
 
 .formato-badge {
   position: absolute; top: 1.2rem; right: 1.2rem;
@@ -748,9 +761,9 @@ body {
 .cobertura-card.highlighted {
   background: var(--light-card);
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(229,80,24,0.1);
+  box-shadow: 0 4px 20px rgba(100,0,143,0.1);
 }
-.cobertura-card.highlighted:hover { box-shadow: 0 16px 44px rgba(229,80,24,0.16); }
+.cobertura-card.highlighted:hover { box-shadow: 0 16px 44px rgba(100,0,143,0.16); }
 .cobertura-num { font-size: 3.2rem; font-weight: 900; color: var(--accent); opacity: 0.15; line-height: 1; margin-bottom: 0.4rem; letter-spacing: -0.03em; }
 
 /* Pinamar: silueta de piña SVG en lugar del icono */
@@ -885,7 +898,23 @@ body {
   /* En mobile el collapse siempre es dark */
   #mainNav.scrolled .navbar-collapse .nav-link { color: rgba(255,255,255,0.88) !important; }
 
-  .hero-pinecone-sil { opacity: 0.06; width: min(75vw, 500px); }
+  /* Mobile hero: video full width muy tenue, piña detrás */
+  .hero-video {
+    width: 100%;
+    -webkit-mask-image: none;
+    mask-image: none;
+    opacity: 0.1;
+  }
+  /* Overlay blanco para legibilidad del texto */
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.88);
+    z-index: 1;
+  }
+  .hero-content { z-index: 3; }
+  .hero-pinecone-sil { opacity: 0.12; width: min(70vw, 380px); z-index: 2; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .btn-outline-hero { margin-left: 0 !important; }
 
