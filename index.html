@@ -46,35 +46,130 @@
     <video class="hero-video" autoplay muted loop playsinline poster="images/sarmiento.jpg">
       <source src="images/magnific_quiero-que-los-autos-circ_2916935240.mp4" type="video/mp4">
     </video>
-    <!-- Máscara blanca con agujero en forma de piña — el video se ve a través del recorte -->
+    <!-- Máscara: overlay blanco con agujero realista en forma de piña de pino -->
     <svg class="hero-pine-mask" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <mask id="pine-hole" maskUnits="userSpaceOnUse" x="0" y="0" width="100" height="100">
-          <!-- Blanco = overlay visible, Negro = agujero transparente donde se ve el video -->
           <rect width="100" height="100" fill="white"/>
-          <!-- Piña centrada en el lado derecho (~75,50) en espacio 0-100 -->
           <g class="pine-cut">
-            <!-- Tallo -->
-            <rect x="73.5" y="6" width="3" height="8" rx="1" fill="black"/>
-            <path d="M71 9 Q75 6 79 9 L77.5 13 Q75 10 72.5 13 Z" fill="black"/>
-            <!-- Cuerpo principal de la piña — forma orgánica tipo cono de pino -->
-            <path d="
+
+            <!-- Tallo con agujas -->
+            <rect x="74.3" y="5" width="1.4" height="9" rx="0.7" fill="black"/>
+            <line x1="75" y1="8" x2="71" y2="4.5" stroke="black" stroke-width="0.6" stroke-linecap="round"/>
+            <line x1="75" y1="8" x2="79" y2="4"   stroke="black" stroke-width="0.6" stroke-linecap="round"/>
+            <line x1="75" y1="9" x2="69.5" y2="7"  stroke="black" stroke-width="0.5" stroke-linecap="round"/>
+            <line x1="75" y1="9" x2="80.5" y2="6.5" stroke="black" stroke-width="0.5" stroke-linecap="round"/>
+            <line x1="75" y1="7" x2="73" y2="3.5"  stroke="black" stroke-width="0.4" stroke-linecap="round"/>
+            <line x1="75" y1="7" x2="77" y2="3.5"  stroke="black" stroke-width="0.4" stroke-linecap="round"/>
+
+            <!-- ── Silueta exterior con perfil dentado de escamas ────────────── -->
+            <!-- Negro = transparente (se ve el video). Cada "bump" es el borde de una fila de escamas. -->
+            <!-- La piña queda centrada en (~75, 49), ocupa aprox x=62–88, y=16–82 -->
+            <path fill="black" d="
               M 75 16
-              C 69 16  61 19  57 25
-              C 53 31  52 38  52.5 45
-              C 53 52  55 58  58 64
-              C 61 70  65 75  69 78
-              C 71 79.5 73 80.5 75 81
-              C 77 80.5 79 79.5 81 78
-              C 85 75  89 70  92 64
-              C 95 58  97 52  97.5 45
-              C 98 38  97 31  93 25
-              C 89 19  81 16  75 16 Z
-            " fill="black"/>
+              C 76.5 16  78 17  78 19
+              C 78 20.5  77.2 21  77.2 22
+              C 79 21.5  81 23  81 25.5
+              C 81 27  80.2 27.8  80.2 29
+              C 82 28.5  84 30.5  83.5 33
+              C 83.5 34.5  82.8 35.5  82.8 36.5
+              C 84.5 36  86.5 38  86 40.5
+              C 86 42  85.2 43  85.2 44
+              C 87 43.5  88.5 45.5  88 48
+              C 88 49.5  87.2 50.5  87.2 51.5
+              C 88 51  88.5 53  88 55.5
+              C 88 57  87.2 58  87.2 59
+              C 88 58.5  87.5 60.5  87 63
+              C 86.8 64.5  86 65.5  86 66.5
+              C 86 66  85.2 68  84 69.5
+              C 83 70.8  82 71.5  82 72.5
+              C 81.5 72  80.5 74.5  79 76
+              C 77.8 77.5  76.5 78  75 79
+              C 73.5 78  72.2 77.5  71 76
+              C 69.5 74.5  68.5 72  68 72.5
+              C 68 71.5  67 70.8  66 69.5
+              C 64.8 68  64 66  64 66.5
+              C 64 65.5  63.2 64.5  63 63
+              C 62.5 60.5  63 58.5  63.8 59
+              C 63.8 58  63 57  62.8 55.5
+              C 62.3 53  63 51  63.8 51.5
+              C 63.8 50.5  63 49.5  62.8 48
+              C 62.3 45.5  64 43.5  65.5 44
+              C 65.5 43  64.8 42  64.8 40.5
+              C 64.3 38  66.3 36  68 36.5
+              C 68 35.5  67.2 34.5  67.2 33
+              C 66.7 30.5  68.7 28.5  70.5 29
+              C 70.5 27.8  69.8 27  69.8 25.5
+              C 69.8 23  71.8 21.5  73.5 22
+              C 73.5 21  72.8 20.5  72.8 19
+              C 72.8 17  74.3 16  75 16 Z
+            "/>
+
+            <!-- ── Textura de escamas (blanco = opaco = muestra el panel blanco) ─
+                 Elipses apiladas en filas escalonadas simulando las brácteas de la piña.
+                 Quedan blancas dentro del negro → crean el efecto de textura/relieve. -->
+
+            <!-- Fila 1 — y≈22, 2 escamas pequeñas -->
+            <ellipse cx="73"   cy="22"   rx="1.2" ry="1.6" fill="white" opacity="0.88"/>
+            <ellipse cx="77"   cy="22"   rx="1.2" ry="1.6" fill="white" opacity="0.88"/>
+
+            <!-- Fila 2 — y≈28, 3 escamas -->
+            <ellipse cx="71"   cy="28"   rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+            <ellipse cx="75"   cy="27.5" rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+            <ellipse cx="79"   cy="28"   rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+
+            <!-- Fila 3 — y≈34, 4 escamas -->
+            <ellipse cx="69.5" cy="34"   rx="1.7" ry="2.2" fill="white" opacity="0.88"/>
+            <ellipse cx="73.5" cy="33.5" rx="1.7" ry="2.2" fill="white" opacity="0.88"/>
+            <ellipse cx="77.5" cy="33.5" rx="1.7" ry="2.2" fill="white" opacity="0.88"/>
+            <ellipse cx="81.5" cy="34"   rx="1.7" ry="2.2" fill="white" opacity="0.88"/>
+
+            <!-- Fila 4 — y≈40.5, 5 escamas (zona más ancha) -->
+            <ellipse cx="68"   cy="40.5" rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="72"   cy="40"   rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="75.5" cy="39.8" rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="79.5" cy="40"   rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="83.5" cy="40.5" rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+
+            <!-- Fila 5 — y≈47, 5 escamas (más anchas) -->
+            <ellipse cx="67.5" cy="47"   rx="2"   ry="2.5" fill="white" opacity="0.88"/>
+            <ellipse cx="71.5" cy="46.5" rx="2"   ry="2.5" fill="white" opacity="0.88"/>
+            <ellipse cx="75.5" cy="46.5" rx="2"   ry="2.5" fill="white" opacity="0.88"/>
+            <ellipse cx="79.5" cy="46.5" rx="2"   ry="2.5" fill="white" opacity="0.88"/>
+            <ellipse cx="83.5" cy="47"   rx="2"   ry="2.5" fill="white" opacity="0.88"/>
+
+            <!-- Fila 6 — y≈53.5, 5 escamas -->
+            <ellipse cx="68"   cy="53.5" rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="72"   cy="53"   rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="75.5" cy="53"   rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="79"   cy="53"   rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+            <ellipse cx="83"   cy="53.5" rx="1.9" ry="2.4" fill="white" opacity="0.88"/>
+
+            <!-- Fila 7 — y≈60, 5 escamas -->
+            <ellipse cx="68.5" cy="60"   rx="1.8" ry="2.3" fill="white" opacity="0.88"/>
+            <ellipse cx="72.5" cy="59.5" rx="1.8" ry="2.3" fill="white" opacity="0.88"/>
+            <ellipse cx="75.5" cy="59.5" rx="1.8" ry="2.3" fill="white" opacity="0.88"/>
+            <ellipse cx="78.5" cy="59.5" rx="1.8" ry="2.3" fill="white" opacity="0.88"/>
+            <ellipse cx="82.5" cy="60"   rx="1.8" ry="2.3" fill="white" opacity="0.88"/>
+
+            <!-- Fila 8 — y≈66.5, 4 escamas (zona que se estrecha) -->
+            <ellipse cx="70"   cy="66.5" rx="1.7" ry="2.1" fill="white" opacity="0.88"/>
+            <ellipse cx="73.5" cy="66"   rx="1.7" ry="2.1" fill="white" opacity="0.88"/>
+            <ellipse cx="77"   cy="66"   rx="1.7" ry="2.1" fill="white" opacity="0.88"/>
+            <ellipse cx="81"   cy="66.5" rx="1.7" ry="2.1" fill="white" opacity="0.88"/>
+
+            <!-- Fila 9 — y≈72.5, 3 escamas -->
+            <ellipse cx="71.5" cy="72.5" rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+            <ellipse cx="75"   cy="72"   rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+            <ellipse cx="78.5" cy="72.5" rx="1.5" ry="2"   fill="white" opacity="0.88"/>
+
+            <!-- Fila 10 — y≈77.5, 2 escamas pequeñas (zona punta) -->
+            <ellipse cx="73.5" cy="77.5" rx="1.2" ry="1.6" fill="white" opacity="0.88"/>
+            <ellipse cx="77"   cy="77.5" rx="1.2" ry="1.6" fill="white" opacity="0.88"/>
+
           </g>
         </mask>
       </defs>
-      <!-- Panel blanco con agujero en forma de piña -->
       <rect width="100" height="100" fill="white" mask="url(#pine-hole)"/>
     </svg>
     <div class="container hero-content">
