@@ -890,23 +890,17 @@ body {
   /* En mobile el collapse siempre es dark */
   #mainNav.scrolled .navbar-collapse .nav-link { color: rgba(255,255,255,0.88) !important; }
 
-  /* Mobile hero: video full width muy tenue, piña detrás */
+  /* Mobile hero: video visible — la máscara de piña maneja el overlay blanco */
   .hero-video {
     width: 100%;
     -webkit-mask-image: none;
     mask-image: none;
-    opacity: 0.1;
+    opacity: 1;
   }
-  /* Overlay blanco para legibilidad del texto */
-  #hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(255,255,255,0.88);
-    z-index: 1;
-  }
+  /* La piña SVG provee el overlay blanco — no hace falta ::before */
+  #hero::before { display: none; }
   .hero-content { z-index: 3; }
-  .hero-pine-mask { display: none; }
+  .hero-pine-mask { display: block; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .btn-outline-hero { margin-left: 0 !important; }
 
@@ -921,7 +915,6 @@ body {
   .poder-irl-content { padding: 50px 24px; }
   .poder-irl-img { height: 320px; }
   .power-stats-row { margin-top: 3rem; }
-  .hero-pine-mask { display: none; }
 }
 
 @media (max-width: 576px) {
