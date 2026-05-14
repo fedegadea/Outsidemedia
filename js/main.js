@@ -26,10 +26,13 @@ document.querySelectorAll(
   revealObserver.observe(el);
 });
 
-// ── Smooth scroll
+// ── Smooth scroll (excluye dropdown toggles)
 document.querySelectorAll('a[href^="#"]').forEach(link => {
+  if (link.dataset.bsToggle === 'dropdown') return; // no interceptar dropdowns
   link.addEventListener('click', (e) => {
-    const target = document.querySelector(link.getAttribute('href'));
+    const href = link.getAttribute('href');
+    if (!href || href === '#') return;
+    const target = document.querySelector(href);
     if (!target) return;
     e.preventDefault();
     const offset = nav.offsetHeight + 16;
