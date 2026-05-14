@@ -840,29 +840,159 @@ body {
 .cobertura-list li i { color: var(--accent); font-size: 0.78rem; flex-shrink: 0; }
 
 /* =============================================
-   CTA FINAL
+   CTA FINAL v2 — estilo OUTFRONT
 ============================================= */
-#contacto {
+.section-ctav2 {
   position: relative;
-  padding: 140px 0;
-  background-image: url('../images/sarmiento.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: #080808;
+  min-height: 580px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
-.cta-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.88); }
-.cta-content { position: relative; z-index: 2; }
-.cta-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: #fff;
-  margin: 1rem 0 1.5rem;
+
+/* — Collage de fotos — */
+.ctav2-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
-.cta-sub    { font-size: 1rem; color: rgba(255,255,255,0.65); line-height: 1.8; margin-bottom: 2.5rem; }
-.cta-number { font-size: 0.9rem; color: rgba(255,255,255,0.4); font-weight: 500; letter-spacing: 0.08em; }
+.ctav2-col {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 21%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.ctav2-col-left  { left: 0; }
+.ctav2-col-right { right: 0; }
+.ctav2-photo { flex: 1; overflow: hidden; }
+.ctav2-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55);
+  transition: filter 0.4s;
+}
+
+/* — Overlay con degradé central — */
+.ctav2-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8,8,8,0.65) 0%,
+    rgba(8,8,8,0.08) 22%,
+    rgba(8,8,8,0.08) 78%,
+    rgba(8,8,8,0.65) 100%
+  );
+  z-index: 1;
+}
+
+/* — Contenido central — */
+.ctav2-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+/* — Título grande — */
+.ctav2-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.9;
+}
+.ctav2-row {
+  display: block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(3.8rem, 10vw, 11rem);
+  font-weight: 900;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+}
+.ctav2-row-mid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25em;
+  flex-wrap: wrap;
+}
+
+/* — Botón pill "Contactanos" dentro del título — */
+.ctav2-pill {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.22em 0.7em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.26em;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px rgba(100,0,143,0.45);
+}
+.ctav2-pill:hover {
+  background: var(--accent-dark);
+  color: #fff;
+  transform: scale(1.06);
+  box-shadow: 0 8px 30px rgba(100,0,143,0.55);
+}
+
+/* — Subtítulo — */
+.ctav2-sub {
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  margin-top: 2rem;
+  margin-bottom: 0;
+  letter-spacing: 0.01em;
+}
+
+/* — Botón Instagram — */
+.ctav2-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1.4rem;
+  letter-spacing: 0.03em;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 14px rgba(100,0,143,0.3);
+}
+.ctav2-ig:hover {
+  background: var(--accent-dark);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(100,0,143,0.45);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ctav2-col { width: 28%; }
+  .section-ctav2 { min-height: 440px; }
+}
+@media (max-width: 576px) {
+  .ctav2-col { display: none; }
+  .ctav2-overlay { background: rgba(8,8,8,0.5); }
+  .ctav2-content { padding: 70px 16px; }
+}
 
 /* =============================================
    FOOTER
