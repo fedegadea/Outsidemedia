@@ -204,6 +204,10 @@ body {
 .navbar-nav .nav-link:hover { color: var(--accent) !important; }
 #mainNav.scrolled .navbar-nav .nav-link:hover { color: var(--text-dark) !important; }
 .navbar-nav .nav-link:hover::after { transform: scaleX(1); }
+/* Sin línea en dropdown toggles */
+.navbar-nav .dropdown .nav-link::after,
+.navbar-nav .dropdown .nav-link:hover::after,
+.navbar-nav .dropdown .nav-link[aria-expanded="true"]::after { transform: scaleX(0) !important; }
 .navbar-toggler { border: none; padding: 0; background: transparent !important; box-shadow: none !important; }
 
 /* ─── Dropdown menus estilo OUTFRONT — blanco, texto negro bold ─── */
