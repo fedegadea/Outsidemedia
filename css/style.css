@@ -295,7 +295,7 @@ body {
 .pine-cut {
   transform-box: fill-box;
   transform-origin: 50% 50%;
-  animation: pineGiro 14s ease-in-out infinite;
+  /* animación desactivada — piña fija */
 }
 
 @keyframes pineGiro {
