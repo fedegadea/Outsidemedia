@@ -146,7 +146,7 @@ body {
 ============================================= */
 #mainNav {
   background: transparent;
-  padding: 1.6rem 0;
+  padding: 1rem 0;
   transition: background 0.4s ease, padding 0.35s ease, box-shadow 0.4s ease;
   border-bottom: 1px solid transparent;
   z-index: 1000;
@@ -154,7 +154,7 @@ body {
 /* Cuando se hace scroll: fondo blanco puro, sombra sutil — igual que outfront */
 #mainNav.scrolled {
   background: #ffffff;
-  padding: 0.85rem 0;
+  padding: 0.65rem 0;
   border-bottom: 1px solid #ebebeb;
   box-shadow: 0 2px 16px rgba(0,0,0,0.07);
 }
@@ -172,6 +172,7 @@ body {
   color: #000;
   transition: color 0.4s;
   gap: 0;
+  margin-left: -4px; /* levemente más a la izquierda */
 }
 .brand-outside { color: inherit; }
 .brand-media   { color: inherit; }
@@ -244,6 +245,21 @@ body {
   border-color: rgba(255,255,255,0.07);
   margin: 0.3rem 0.5rem;
 }
+/* Sin gap entre toggle y menú para que el hover no se corte */
+@media (min-width: 992px) {
+  .navbar-nav .dropdown-menu {
+    margin-top: 0.25rem !important;
+  }
+  /* Pseudo-puente invisible entre botón y menú */
+  .navbar-nav .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0; right: 0;
+    height: 10px;
+  }
+}
+
 /* Flecha del toggle */
 .navbar-nav .dropdown-toggle::after {
   margin-left: 0.35em;

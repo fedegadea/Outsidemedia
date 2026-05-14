@@ -26,6 +26,37 @@ document.querySelectorAll(
   revealObserver.observe(el);
 });
 
+// ── Hover dropdowns en desktop (≥992px)
+function initHoverDropdowns() {
+  if (window.innerWidth < 992) return;
+  document.querySelectorAll('#mainNav .dropdown').forEach(dd => {
+    const toggle = dd.querySelector('.dropdown-toggle');
+    let hideTimer;
+
+    dd.addEventListener('mouseenter', () => {
+      clearTimeout(hideTimer);
+      bootstrap.Dropdown.getOrCreateInstance(toggle).show();
+    });
+    dd.addEventListener('mouseleave', () => {
+      // pequeño delay para que el puntero pueda entrar al menú
+      hideTimer = setTimeout(() => {
+        bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+      }, 80);
+    });
+  });
+}
+// Inicializar y re-evaluar al resize
+initHoverDropdowns();
+window.addEventListener('resize', () => {
+  // En mobile destruir instancias hover para que funcione solo con click
+  if (window.innerWidth < 992) {
+    document.querySelectorAll('#mainNav .dropdown-menu.show').forEach(m => {
+      const toggle = m.closest('.dropdown')?.querySelector('.dropdown-toggle');
+      if (toggle) bootstrap.Dropdown.getOrCreateInstance(toggle).hide();
+    });
+  }
+}, { passive: true });
+
 // ── Smooth scroll (excluye dropdown toggles)
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   if (link.dataset.bsToggle === 'dropdown') return; // no interceptar dropdowns
