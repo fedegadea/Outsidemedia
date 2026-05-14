@@ -159,7 +159,7 @@ body {
   box-shadow: 0 2px 16px rgba(0,0,0,0.07);
 }
 
-/* Logo: una sola palabra, todo el mismo color */
+/* Logo: violeta siempre */
 .navbar-brand {
   text-decoration: none;
   display: flex;
@@ -169,15 +169,15 @@ body {
   font-weight: 900;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #000;
-  transition: color 0.4s;
+  color: var(--accent);
+  transition: color 0.3s;
   gap: 0;
-  margin-left: -4px; /* levemente más a la izquierda */
+  margin-left: -4px;
 }
 .brand-outside { color: inherit; }
 .brand-media   { color: inherit; }
 
-#mainNav.scrolled .navbar-brand { color: var(--text-dark); }
+#mainNav.scrolled .navbar-brand { color: var(--accent); }
 
 /* Links: negros sobre hero (fondo blanco), grises oscuros al scrollear */
 .navbar-nav .nav-link {
@@ -206,44 +206,43 @@ body {
 .navbar-nav .nav-link:hover::after { transform: scaleX(1); }
 .navbar-toggler { border: none; padding: 0; background: transparent !important; box-shadow: none !important; }
 
-/* ─── Dropdown menus estilo OUTFRONT ─── */
+/* ─── Dropdown menus estilo OUTFRONT — blanco, texto negro bold ─── */
 .navbar-nav .dropdown-menu {
-  background: rgba(8,8,8,0.97);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px;
-  padding: 0.5rem 0.4rem;
-  margin-top: 0.6rem !important;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  min-width: 210px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-  animation: ddFadeIn 0.18s ease forwards;
+  background: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.6rem 0;
+  margin-top: 0 !important;
+  min-width: 240px;
+  box-shadow: 0 8px 36px rgba(0,0,0,0.13);
+  animation: ddFadeIn 0.16s ease forwards;
 }
 @keyframes ddFadeIn {
-  from { opacity: 0; transform: translateY(-6px); }
+  from { opacity: 0; transform: translateY(-4px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .navbar-nav .dropdown-item {
-  color: rgba(255,255,255,0.72);
-  font-size: 0.87rem;
-  font-weight: 500;
-  padding: 0.62rem 1rem;
-  border-radius: 6px;
-  transition: background 0.18s, color 0.18s;
+  color: #0f0f0f;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.65rem 1.4rem;
+  border-radius: 0;
+  transition: color 0.15s, padding-left 0.15s;
   font-family: 'Poppins', sans-serif;
+  letter-spacing: -0.01em;
+  background: transparent;
 }
 .navbar-nav .dropdown-item:hover {
-  background: rgba(255,255,255,0.09);
-  color: #fff;
+  background: transparent;
+  color: var(--accent);
+  padding-left: 1.8rem;
 }
 .navbar-nav .dropdown-item i {
-  width: 18px;
-  opacity: 0.5;
-  margin-right: 0.4rem;
+  display: none;
 }
 .navbar-nav .dropdown-divider {
-  border-color: rgba(255,255,255,0.07);
-  margin: 0.3rem 0.5rem;
+  border-color: #efefef;
+  margin: 0.4rem 1.4rem;
 }
 /* Sin gap entre toggle y menú para que el hover no se corte */
 @media (min-width: 992px) {
